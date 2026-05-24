@@ -126,13 +126,29 @@
   // ========== State ==========
   let isAuthenticated = false;
   let currentContactId = 0;
+  let currentUserName = '';
 
   function updateUI() {
     const btnText = qs('#submitBtn .btn__text');
     if (btnText) btnText.textContent = isAuthenticated ? 'Обновить данные' : 'Отправить';
 
     const authCard = qs('#authCard');
-    if (authCard) authCard.style.display = isAuthenticated ? 'none' : '';
+    if (authCard) {
+      if (isAuthenticated) {
+        authCard.innerHTML =
+          '<h3 class="infoCard__title">Личный кабинет</h3>' +
+          '<p class="infoCard__text">Вы вошли как <strong>' + escapeHtml(currentUserName || 'пользователь') + '</strong></p>' +
+          '<button class="btn btn--ghost" type="button" id="logoutBtn" style="width:100%;margin-top:8px">Выйти</button>';
+        const logoutBtn = qs('#logoutBtn');
+        if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+      } else {
+        // restore login form on logout (page reloads anyway)
+      }
+    }
+
+    // hide the "agree" note when editing
+    const note = qs('.form__note');
+    if (note) note.style.display = isAuthenticated ? 'none' : '';
   }
 
   // ========== Auth ==========
@@ -156,6 +172,7 @@
       setToken(data.token, data.contact ? data.contact.id : 0);
       isAuthenticated = true;
       currentContactId = data.contact ? data.contact.id : 0;
+      currentUserName = data.contact ? (data.contact.name || '') : '';
 
       if (data.contact) fillForm(qs('#contactForm'), data.contact);
 
@@ -245,6 +262,7 @@
         if (res.ok && data.ok && data.contact) {
           isAuthenticated = true;
           currentContactId = data.contact.id;
+          currentUserName = data.contact.name || '';
           fillForm(form, data.contact);
           updateUI();
         } else { clearToken(); }
