@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Оставить заявку — Drupal Coder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/form.css" />
+</head>
+<body>
+  <div class="formPage__nav">
+    <div class="container nav">
+      <a class="brand" href="./" aria-label="На главную">
+        <span class="brand__mark">DC</span>
+        <span class="brand__text">Drupal Coder</span>
+      </a>
+      <nav class="menu menu--desktop menu--always" aria-label="Навигация">
+        <ul class="menu__list">
+          <li class="menu__item"><a class="menu__link" href="./">Главная</a></li>
+          <li class="menu__item"><a class="menu__link menu__link--active" href="./form">Анкета</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="section" id="form-section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Оставить заявку</h2>
+          <p class="section__desc">Заполните форму — после первой отправки вы получите логин и пароль для редактирования данных.</p>
+        </div>
+
+        <div class="contact">
+          <form class="form" id="contactForm" action="./api/contacts" method="post" novalidate>
+            <div class="form__row form__row--3">
+              <label class="field">
+                <span class="field__label">Имя</span>
+                <input class="field__input" type="text" name="name" autocomplete="name" required minlength="2" />
+                <span class="field__error" data-error-for="name"></span>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Телефон</span>
+                <input class="field__input" type="tel" name="phone" autocomplete="tel" required minlength="6" />
+                <span class="field__error" data-error-for="phone"></span>
+              </label>
+
+              <label class="field">
+                <span class="field__label">Email</span>
+                <input class="field__input" type="email" name="email" autocomplete="email" required />
+                <span class="field__error" data-error-for="email"></span>
+              </label>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Сообщение</span>
+              <textarea class="field__input field__input--area" name="message" rows="5" required minlength="10"></textarea>
+              <span class="field__error" data-error-for="message"></span>
+            </label>
+
+            <div class="form__foot">
+              <button class="btn btn--primary" type="submit" id="submitBtn">
+                <span class="btn__text">Отправить</span>
+                <span class="btn__spinner" aria-hidden="true"></span>
+              </button>
+              <p class="form__note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</p>
+            </div>
+
+            <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          </form>
+
+          <aside class="contact__info">
+            <div class="infoCard" id="authCard">
+              <h3 class="infoCard__title">Уже есть аккаунт?</h3>
+              <p class="infoCard__text">Войдите, чтобы загрузить и изменить ранее отправленные данные.</p>
+              <form class="form form--compact" id="authForm" action="./api/login" method="post">
+                <label class="field">
+                  <span class="field__label">Логин</span>
+                  <input class="field__input" type="text" name="login" autocomplete="username" />
+                </label>
+                <label class="field">
+                  <span class="field__label">Пароль</span>
+                  <input class="field__input" type="password" name="password" autocomplete="current-password" />
+                </label>
+                <button class="btn btn--ghost" type="submit" style="width:100%;margin-top:8px">Войти</button>
+              </form>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted">© <span id="year">2025</span> Drupal Coder</p>
+      <a class="muted" href="./">На главную</a>
+    </div>
+  </footer>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>

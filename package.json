@@ -1,0 +1,17 @@
+{
+  "name": "backend-project",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Node.js CGI/HTTP backend — survey form with JWT auth",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check src/app.js && node --check src/config.js && node --check src/constants.js && node --check src/db.js && node --check src/http.js && node --check src/jwt.js && node --check src/passwords.js && node --check src/static.js && node --check src/submissions.js && node --check src/validation.js && node --check src/views.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.5"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

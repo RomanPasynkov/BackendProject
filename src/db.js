@@ -1,0 +1,62 @@
+const { getConfig } = require('./config');
+
+let pool;
+
+async function getPool() {
+  if (pool) return pool;
+
+  const mysql = require('mysql2/promise');
+  pool = mysql.createPool({
+    ...getConfig().db,
+    charset: 'utf8mb4',
+    waitForConnections: true,
+    connectionLimit: 5,
+    queueLimit: 0,
+    connectTimeout: 5000,
+    namedPlaceholders: true,
+  });
+
+  await ensureSchema(pool);
+  return pool;
+}
+
+async function ensureSchema(db) {
+  await db.query(`CREATE TABLE IF NOT EXISTS contacts (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+
+  await db.query(`CREATE TABLE IF NOT EXISTS contact_accounts (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    contact_id INT UNSIGNED NOT NULL UNIQUE,
+    login VARCHAR(64) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_ca_contact
+      FOREIGN KEY (contact_id) REFERENCES contacts(id)
+      ON DELETE CASCADE
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`);
+}
+
+async function withTransaction(callback) {
+  const db = await getPool();
+  const connection = await db.getConnection();
+
+  try {
+    await connection.beginTransaction();
+    const result = await callback(connection);
+    await connection.commit();
+    return result;
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
+}
+
+module.exports = { getPool, withTransaction };

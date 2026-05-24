@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drupal Coder — лендинг</title>
+
+  <!-- Fonts (замени на шрифты из fonts.txt, если в макете другие) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper (слайдер) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="./css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- HEADER -->
+  <header class="header" id="top">
+    <div class="header__bg">
+      <!-- Положи свой video.mp4 в assets/hero-bg.mp4 -->
+      <video class="header__video" autoplay muted loop playsinline preload="metadata" poster="assets/hero-bg-poster.jpg">
+        <source src="./assets/hero-bg.mp4" type="video/mp4" />
+      </video>
+      <div class="header__overlay" aria-hidden="true"></div>
+    </div>
+
+    <div class="container header__inner">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="На главную">
+          <span class="brand__mark">DC</span>
+          <span class="brand__text">Drupal Coder</span>
+        </a>
+
+        <!-- DESKTOP NAV -->
+        <nav class="menu menu--desktop" aria-label="Основное меню">
+          <ul class="menu__list">
+            <li class="menu__item"><a class="menu__link" href="#services">Услуги</a></li>
+
+            <li class="menu__item menu__item--dropdown">
+              <button class="menu__link menu__dropdownBtn" type="button" aria-expanded="false" aria-controls="dropdown-1">
+                Решения
+                <span class="chev" aria-hidden="true">▾</span>
+              </button>
+
+              <div class="dropdown" id="dropdown-1" role="menu">
+                <a class="dropdown__item" href="#cases" role="menuitem">Кейсы</a>
+                <a class="dropdown__item" href="#stack" role="menuitem">Стек</a>
+                <a class="dropdown__item" href="#team" role="menuitem">Команда</a>
+              </div>
+            </li>
+
+            <li class="menu__item"><a class="menu__link" href="#pricing">Цены</a></li>
+            <li class="menu__item"><a class="menu__link" href="#faq">FAQ</a></li>
+            <li class="menu__item"><a class="menu__link" href="#contacts">Контакты</a></li>
+            <li class="menu__item"><a class="menu__link" href="./form">Анкета</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav__actions">
+          <a class="btn btn--ghost" href="./form">Анкета</a>
+          <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-controls="mobileMenu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE MENU -->
+      <div class="mobileMenu" id="mobileMenu" aria-hidden="true">
+        <nav class="mobileMenu__panel" aria-label="Меню (мобильное)">
+          <button class="mobileMenu__close" id="mobileClose" type="button" aria-label="Закрыть меню">✕</button>
+
+          <a class="mobileMenu__link" href="#services">Услуги</a>
+          <details class="mobileMenu__details">
+            <summary class="mobileMenu__summary">Решения</summary>
+            <a class="mobileMenu__sublink" href="#cases">Кейсы</a>
+            <a class="mobileMenu__sublink" href="#stack">Стек</a>
+            <a class="mobileMenu__sublink" href="#team">Команда</a>
+          </details>
+          <a class="mobileMenu__link" href="#pricing">Цены</a>
+          <a class="mobileMenu__link" href="#faq">FAQ</a>
+          <a class="mobileMenu__link" href="#contacts">Контакты</a>
+          <a class="mobileMenu__link" href="./form">Анкета</a>
+
+          <a class="btn btn--primary mobileMenu__cta" href="./form">Заполнить анкету</a>
+        </nav>
+        <div class="mobileMenu__backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+      </div>
+
+      <!-- HERO -->
+      <section class="hero">
+        <p class="pill">Разработка / Поддержка / Интеграции</p>
+        <h1 class="hero__title">Разрабатываем сайты и сервисы на Drupal</h1>
+        <p class="hero__subtitle">
+          Команда разработчиков, дизайнеров и аналитиков. Делаем быстро, поддерживаем долго.
+        </p>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="./form">Оставить заявку</a>
+          <a class="btn btn--ghost btn--onDark" href="#cases">Смотреть кейсы</a>
+        </div>
+
+        <div class="hero__stats" aria-label="Ключевые показатели">
+          <div class="stat">
+            <div class="stat__num">10+</div>
+            <div class="stat__label">лет опыта</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">120+</div>
+            <div class="stat__label">проектов</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num">24/7</div>
+            <div class="stat__label">поддержка</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Услуги</h2>
+          <p class="section__desc">Набор блоков и типографика под макет. Тексты заменишь на свои.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card">
+            <h3 class="card__title">Разработка</h3>
+            <p class="card__text">Лендинги, корпоративные сайты, порталы, личные кабинеты.</p>
+            <ul class="list">
+              <li>Drupal / Symfony</li>
+              <li>API и интеграции</li>
+              <li>Тестирование</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">Поддержка</h3>
+            <p class="card__text">SLA, мониторинг, безопасность, обновления и бэкапы.</p>
+            <ul class="list">
+              <li>Регламент работ</li>
+              <li>Реакция на инциденты</li>
+              <li>Отчетность</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card__title">Дизайн</h3>
+            <p class="card__text">UI/UX, дизайн-системы, прототипирование в Figma.</p>
+            <ul class="list">
+              <li>Компоненты</li>
+              <li>Адаптив</li>
+              <li>Хэнд-офф</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES + SLIDER -->
+    <section class="section section--alt" id="cases">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <h2 class="section__title">Кейсы</h2>
+            <p class="section__desc">Подборка проектов: разработка, интеграции и поддержка Drupal‑решений.</p>
+          </div>
+
+          <div class="sliderNav">
+            <button class="iconBtn" type="button" id="casesPrev" aria-label="Предыдущий слайд">‹</button>
+            <button class="iconBtn" type="button" id="casesNext" aria-label="Следующий слайд">›</button>
+          </div>
+        </div>
+
+        <div class="swiper" id="casesSwiper" aria-label="Слайдер кейсов">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="case">
+                <div class="case__media" role="img" aria-label="Скриншот проекта 1"></div>
+                <div class="case__body">
+                  <h3 class="case__title">HR‑портал для 5&nbsp;000 сотрудников</h3>
+                  <p class="case__text">Сделали портал обучения и внутренних сервисов: SSO, роли, курсы, отчёты и дашборды. Внедрили поисковую выдачу и оптимизировали TTFB на <b>-47%</b>.</p>
+                  <a class="case__link" href="#contacts">Оставить заявку →</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="case">
+                <div class="case__media case__media--2" role="img" aria-label="Скриншот проекта 2"></div>
+                <div class="case__body">
+                  <h3 class="case__title">Партнёрский кабинет финтех‑сервиса</h3>
+                  <p class="case__text">Собрали личный кабинет партнёров: заявки, статусы, документы, витрина API. Нагрузочное тестирование до <b>1&nbsp;200 rps</b>, SLA <b>99.9%</b>.</p>
+                  <a class="case__link" href="#contacts">Обсудить →</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="case">
+                <div class="case__media case__media--3" role="img" aria-label="Скриншот проекта 3"></div>
+                <div class="case__body">
+                  <h3 class="case__title">HR‑портал для 5&nbsp;000 сотрудников</h3>
+                  <p class="case__text">Сделали портал обучения и внутренние сервисы: SSO, роли, курсы, отчёты, дашборды. Сократили время адаптации новичков на <b>−20%</b>.</p>
+                  <a class="case__link" href="#contacts">Оставить заявку →</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        </div>
+    </section>
+
+    <!-- STACK -->
+    <section class="section" id="stack">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Технологии</h2>
+          <p class="section__desc">Стек, который используем в проектах ежедневно.</p>
+        </div>
+
+        <div class="chips">
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3c3 3 6 6 6 10a6 6 0 1 1-12 0c0-4 3-7 6-10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">Drupal</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h10a4 4 0 0 1 0 8H9v4H4V7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">PHP</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">Symfony</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7c0-2 4-4 8-4s8 2 8 4-4 4-8 4-8-2-8-4zm0 0v10c0 2 4 4 8 4s8-2 8-4V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">MySQL</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 14h16v4H4v-4zm4-10h4v4H8V4zm6 0h4v4h-4V4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">Docker</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7l10 10M7 7h4v4M17 17h-4v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">Git</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8l-3 4 3 4M17 8l3 4-3 4M10 19l4-14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">CI/CD</span></span>
+          <span class="chip chip--icon"><svg class="chip__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14M7 7l10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="chip__text">REST</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section section--alt" id="pricing">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Тарифы</h2>
+          <p class="section__desc">Прозрачные пакеты работ для запуска и поддержки Drupal‑решений.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="price">
+            <div class="price__top">
+              <h3 class="price__title">Старт</h3>
+              <p class="price__sum">€390</p>
+              <p class="price__sub">в месяц</p>
+            </div>
+            <ul class="list">
+              <li>Техническая поддержка</li>
+              <li>1–2 задачи</li>
+              <li>Мониторинг</li>
+            </ul>
+            <a class="btn btn--ghost price__btn" href="./form">Выбрать</a>
+          </article>
+
+          <article class="price price--accent" aria-label="Рекомендуемый тариф">
+            <div class="price__badge">Популярный</div>
+            <div class="price__top">
+              <h3 class="price__title">Бизнес</h3>
+              <p class="price__sum">€990</p>
+              <p class="price__sub">в месяц</p>
+            </div>
+            <ul class="list">
+              <li>До 10 задач</li>
+              <li>SLA 8/5</li>
+              <li>Резервное копирование</li>
+            </ul>
+            <a class="btn btn--primary price__btn" href="./form">Связаться</a>
+          </article>
+
+          <article class="price">
+            <div class="price__top">
+              <h3 class="price__title">Энтерпрайз</h3>
+              <p class="price__sum">€1990</p>
+              <p class="price__sub">в месяц</p>
+            </div>
+            <ul class="list">
+              <li>Выделенная команда</li>
+              <li>SLA 24/7</li>
+              <li>DevOps</li>
+            </ul>
+            <a class="btn btn--ghost price__btn" href="./form">Обсудить</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">FAQ</h2>
+          <p class="section__desc">Ответы на частые вопросы о сроках, поддержке и интеграциях.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq__item">
+            <summary class="faq__q">Сколько занимает разработка?</summary>
+            <div class="faq__a">Обычно 2–8 недель, зависит от объема и интеграций.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Можно ли поддерживать текущий сайт?</summary>
+            <div class="faq__a">Да, проводим аудит и берем на поддержку по SLA.</div>
+          </details>
+          <details class="faq__item">
+            <summary class="faq__q">Какие гарантии?</summary>
+            <div class="faq__a">Договор, отчетность, контроль качества и тестирование.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS -->
+    <section class="section section--alt" id="contacts">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title">Оставить заявку</h2>
+          <p class="section__desc">Оставьте контакты — ответим в течение рабочего дня и предложим план работ.</p>
+        </div>
+
+        <div class="contact">
+          <div class="form" style="text-align:center;padding:32px 16px">
+            <p style="margin:0 0 18px;color:var(--muted);font-size:16px">Заполните анкету, чтобы мы могли с вами связаться. После первой отправки вы получите логин и пароль для редактирования данных.</p>
+            <a class="btn btn--primary" href="./form" style="font-size:16px;padding:14px 28px">Перейти к анкете →</a>
+          </div>
+
+          <aside class="contact__info">
+            <div class="infoCard">
+              <h3 class="infoCard__title">Контакты</h3>
+              <div class="infoCard__rows">
+                <div><span class="muted">Email:</span> hello@example.com</div>
+                <div><span class="muted">Тел:</span> +370 (000) 00000</div>
+                <div><span class="muted">Город:</span> Vilnius</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="muted">© <span id="year"></span> Drupal Coder</p>
+      <a class="muted" href="#top">Наверх ↑</a>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

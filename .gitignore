@@ -1,0 +1,9 @@
+node_modules/
+.env
+.npm-cache/
+.idea/
+
+# Reference folders (delete before commit)
+project/
+project-old/
+task6/

@@ -1,0 +1,60 @@
+/* form.css — minimal additions for the form page (dark theme comes from styles.css) */
+
+/* Nav bar for form page (no video header, just a sticky top bar) */
+.formPage__nav{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  background: rgba(11,16,32,.85);
+  backdrop-filter: blur(10px);
+}
+
+/* Always show desktop menu on form page */
+.menu--always{ display: block !important; }
+
+/* Active nav link highlight */
+.menu__link--active{
+  background: rgba(124,92,255,.18);
+  border-radius: 12px;
+}
+
+/* Three‑column row for name / phone / email */
+.form__row--3{ grid-template-columns: 1fr; }
+@media (min-width: 768px){
+  .form__row--3{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Alerts */
+.formAlert{
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.formAlert--ok{
+  background: rgba(47,211,255,.10);
+  border: 1px solid rgba(47,211,255,.28);
+  color: var(--brand-2);
+}
+.formAlert--err{
+  background: rgba(255,100,100,.10);
+  border: 1px solid rgba(255,100,100,.28);
+  color: #ffb3b3;
+}
+
+/* Credentials box (shown via JS) */
+#credentialsBox{
+  margin-bottom: 14px;
+}
+#credentialsBox h3{
+  margin: 0 0 6px;
+  color: var(--brand-2);
+  font-size: 15px;
+}
+#credentialsBox p{
+  margin: 3px 0;
+  font-size: 13px;
+}
