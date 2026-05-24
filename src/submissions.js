@@ -51,7 +51,19 @@ async function updateContact(contactId, values) {
       throw error;
     }
 
-    return loadContact(contactId);
+    const [rows] = await db.query(
+      'SELECT id, name, phone, email, message, created_at FROM contacts WHERE id = :id',
+      { id: contactId },
+    );
+    const row = rows[0];
+    return {
+      id: Number(row.id),
+      name: row.name,
+      phone: row.phone,
+      email: row.email,
+      message: row.message,
+      created_at: row.created_at,
+    };
   });
 }
 

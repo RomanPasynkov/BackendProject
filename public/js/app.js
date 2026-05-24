@@ -237,7 +237,7 @@
         setStatus(data.message || '');
       }
 
-      if (data.contact) fillForm(form, data.contact);
+      if (data.contact && data.credentials) fillForm(form, data.contact);
     } catch (err) {
       showAlert('Ошибка сети.', 'error');
       console.error(err);
