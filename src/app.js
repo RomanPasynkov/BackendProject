@@ -178,7 +178,7 @@ async function profileRoute(request) {
 async function updateProfileRoute(request, contactId) {
   const auth = getBearerPayload(request);
   const authContactId = Number(auth && auth.sub ? auth.sub : 0);
-  console.log('[updateProfile] contactId=%d authPayload=%j authHeader=%s', contactId, auth, (request.headers.authorization || '').slice(0, 30));
+  console.error('[updateProfile] contactId=%d authPayload=%j authHeader=%s', contactId, auth, (request.headers.authorization || '').slice(0, 30));
   if (!authContactId) return json(401, { ok: false, error: 'Требуется авторизация.' });
   if (authContactId !== contactId) return json(403, { ok: false, error: 'Нельзя редактировать чужой профиль.' });
 
