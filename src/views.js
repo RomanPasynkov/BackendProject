@@ -61,7 +61,6 @@ function renderFormPage({ config, errors = {}, values, message = '', credentials
 
         <div class="contact">
           <form class="form" id="contactForm" action="${basePath}/api/contacts" method="post" novalidate>
-            ${isAuthenticated ? '<input type="hidden" name="_method" value="PUT">' : ''}
             <div class="form__row form__row--3">
               <label class="field">
                 <span class="field__label">Имя</span>
@@ -94,7 +93,7 @@ function renderFormPage({ config, errors = {}, values, message = '', credentials
                 <span class="btn__spinner" aria-hidden="true"></span>
               </button>
               ${isAuthenticated
-                ? `<form action="${basePath}/api/logout" method="post" style="display:inline"><button class="btn btn--ghost" type="submit">Выйти</button></form>`
+                ? ''
                 : '<p class="form__note">Нажимая «Отправить», вы соглашаетесь на обработку данных.</p>'}
             </div>
 
@@ -122,6 +121,9 @@ function renderFormPage({ config, errors = {}, values, message = '', credentials
             <div class="infoCard">
               <h3 class="infoCard__title">Режим редактирования</h3>
               <p class="infoCard__text">Вы вошли в систему. Измените данные формы и нажмите «Обновить данные».</p>
+              <form action="${basePath}/api/logout" method="post" style="margin-top:12px">
+                <button class="btn btn--ghost" type="submit" style="width:100%">Выйти</button>
+              </form>
             </div>`}
           </aside>
         </div>
