@@ -44,7 +44,7 @@ async function route(request, config) {
   }
 
   if (effectiveMethod === 'POST' && path === '/api/logout') {
-    return logoutRoute(request);
+    return logoutRoute(request, config);
   }
 
   if (effectiveMethod === 'GET' && path === '/api/profile') {
@@ -157,13 +157,14 @@ async function loginRoute(request, config) {
   }), { 'Set-Cookie': cookie });
 }
 
-async function logoutRoute(request) {
+async function logoutRoute(request, config) {
   if (wantsJson(request)) {
     return json(200, { ok: true });
   }
 
+  const basePath = config ? config.basePath || '' : '';
   const cookie = clearCookieHeader('token');
-  return redirect('/form', { 'Set-Cookie': cookie });
+  return redirect(basePath + '/form', { 'Set-Cookie': cookie });
 }
 
 async function profileRoute(request) {
