@@ -126,7 +126,7 @@
   // ========== State ==========
   let isAuthenticated = false;
   let currentContactId = 0;
-  let currentUserName = '';
+  let currentUserLogin = '';
 
   function updateUI() {
     const btnText = qs('#submitBtn .btn__text');
@@ -137,7 +137,7 @@
       if (isAuthenticated) {
         authCard.innerHTML =
           '<h3 class="infoCard__title">Личный кабинет</h3>' +
-          '<p class="infoCard__text">Вы вошли как <strong>' + escapeHtml(currentUserName || 'пользователь') + '</strong></p>' +
+          '<p class="infoCard__text">Вы вошли как <strong>' + escapeHtml(currentUserLogin || 'пользователь') + '</strong></p>' +
           '<button class="btn btn--ghost" type="button" id="logoutBtn" style="width:100%;margin-top:8px">Выйти</button>';
         const logoutBtn = qs('#logoutBtn');
         if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
@@ -172,7 +172,7 @@
       setToken(data.token, data.contact ? data.contact.id : 0);
       isAuthenticated = true;
       currentContactId = data.contact ? data.contact.id : 0;
-      currentUserName = data.contact ? (data.contact.name || '') : '';
+      currentUserLogin = login;
 
       if (data.contact) fillForm(qs('#contactForm'), data.contact);
 
@@ -262,7 +262,7 @@
         if (res.ok && data.ok && data.contact) {
           isAuthenticated = true;
           currentContactId = data.contact.id;
-          currentUserName = data.contact.name || '';
+          currentUserLogin = data.login || '';
           fillForm(form, data.contact);
           updateUI();
         } else { clearToken(); }

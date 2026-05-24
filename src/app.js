@@ -8,6 +8,7 @@ const {
   authenticate,
   createContact,
   loadContact,
+  loadLoginByContactId,
   updateContact,
 } = require('./submissions');
 
@@ -142,6 +143,7 @@ async function loginRoute(request, config) {
       ok: true,
       token,
       tokenType: 'Bearer',
+      login,
       contact: account.contact,
     });
   }
@@ -172,7 +174,8 @@ async function profileRoute(request) {
   const contact = await loadContact(contactId);
   if (!contact) return json(404, { ok: false, error: 'Заявка не найдена.' });
 
-  return json(200, { ok: true, contact });
+  const loginName = await loadLoginByContactId(contactId);
+  return json(200, { ok: true, login: loginName, contact });
 }
 
 async function updateProfileRoute(request, contactId) {

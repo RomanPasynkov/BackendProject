@@ -95,6 +95,15 @@ async function loadContact(id) {
   };
 }
 
+async function loadLoginByContactId(contactId) {
+  const db = await getPool();
+  const [rows] = await db.query(
+    'SELECT login FROM contact_accounts WHERE contact_id = :id',
+    { id: contactId },
+  );
+  return rows.length > 0 ? rows[0].login : null;
+}
+
 async function generateUniqueLogin(db) {
   let login;
   let exists = true;
@@ -123,4 +132,4 @@ function randomString(length, alphabet) {
   return value;
 }
 
-module.exports = { authenticate, createContact, loadContact, updateContact };
+module.exports = { authenticate, createContact, loadContact, loadLoginByContactId, updateContact };
